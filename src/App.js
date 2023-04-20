@@ -20,8 +20,13 @@ function App() {
   }
 
   return (
-    <div>
-      <MusicTable parentSongs={songs}/>
+    <div className='container-fluid'>
+      <div className='row'>
+        <h3>Music Library</h3>
+      </div>
+      <div>
+        <MusicTable parentSongs={songs}/>
+      </div>
     </div>
   );
 }
