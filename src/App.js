@@ -13,6 +13,7 @@ function App() {
 
   useEffect(() => {
     getAllSongs();
+    // addNewSong();
   }, []);
 
   async function getAllSongs(){
@@ -22,9 +23,14 @@ function App() {
     
   }
 
-  function addNewSong(song){
-    let tempSongs = [...songs, song];
-    setSongs(tempSongs);
+  async function addNewSong(song){
+    
+    // let tempSongs = [...songs, song];
+    // setSongs(tempSongs);
+    // setSongs(response.data);
+
+    const response = await axios.post('http://127.0.0.1:8000/api/music/', song)
+    setSongs(response.data);
   }
 
   
