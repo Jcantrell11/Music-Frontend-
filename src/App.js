@@ -4,6 +4,7 @@ import MusicTable from './Components/MusicTable/MusicTable';
 import SearchBar from './Components/SearchBar/SearchBar';
 import AddSongForm from './Components/AddSong/AddSongForm';
 import NavBar from './Components/NavBar';
+import './App.css';
 
 function App() {
 
@@ -13,7 +14,6 @@ function App() {
 
   useEffect(() => {
     getAllSongs();
-    // addNewSong();
   }, []);
 
   async function getAllSongs(){
@@ -28,9 +28,14 @@ function App() {
     // let tempSongs = [...songs, song];
     // setSongs(tempSongs);
     // setSongs(response.data);
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/music/', song)
+      setSongs(response.data);
 
-    const response = await axios.post('http://127.0.0.1:8000/api/music/', song)
-    setSongs(response.data);
+    } catch (error) {
+      console.log(error)
+    }
+    
   }
 
   
@@ -41,14 +46,17 @@ function App() {
         <div>
           <NavBar />
         </div>
-        {/* <h3>Music Library</h3> */}
-      </div>
-      <div>
-        <MusicTable parentSongs={songs}/>
-        <SearchBar/>
-      </div>
-      <div>
-        <AddSongForm addNewSongProperty={addNewSong}/>
+        <div className='col-md-6'>
+          <div className='border-box'>
+            <MusicTable parentSongs={songs}/>
+            <SearchBar/>
+          </div>
+        </div>
+        <div className='col-md-6'>
+          <div className='border-box'>
+            <AddSongForm addNewSongProperty={addNewSong}/>
+          </div>
+        </div>
       </div>
     </div>
   );

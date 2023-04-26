@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const AddSongForm = (props) => {
     
@@ -18,6 +18,8 @@ const AddSongForm = (props) => {
             genre: genre
         };
         props.addNewSongProperty(newSong)
+
+
 
         setTitle('');
         setArtist('');
@@ -48,7 +50,7 @@ const AddSongForm = (props) => {
                 <label>Genre</label>
                 <input type='text' className='form-control' value={genre} onChange={(event) => setGenre(event.target.value)} />
             </div>
-            <button type='submit'>Add Song</button>
+            <button type='submit' style={{'marginTop': '1em'}}>Add Song</button>
 
         </form>
 

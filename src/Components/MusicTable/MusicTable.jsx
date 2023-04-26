@@ -7,13 +7,15 @@ const MusicTable = (props) => {
         //     </div>
         //     <button type='submit'>Search</button>
         // </form>
-        <table>
+        <table className="table">
                 <thead>
-                    <th>Title</th>
-                    <th>Artist</th>
-                    <th>Album</th>
-                    <th>Release Date</th>
-                    <th>Genre</th>
+                    <tr>
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>Album</th>
+                        <th>Release Date</th>
+                        <th>Genre</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {props.parentSongs.map((setSongs, index) => {
