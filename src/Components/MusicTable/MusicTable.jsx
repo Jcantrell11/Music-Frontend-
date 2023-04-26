@@ -1,12 +1,13 @@
 
 const MusicTable = (props) => {
     return (
-        <><form>
-            <div>
-                <input type="text"></input>
-            </div>
-            <button type='submit'>Search</button>
-        </form><table>
+        // <><form>
+        //     <div>
+        //         <input type="text"></input>
+        //     </div>
+        //     <button type='submit'>Search</button>
+        // </form>
+        <table>
                 <thead>
                     <th>Title</th>
                     <th>Artist</th>
@@ -27,7 +28,7 @@ const MusicTable = (props) => {
                         );
                     })}
                 </tbody>
-            </table></>
+            </table>
     )
 }
 

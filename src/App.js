@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MusicTable from './Components/MusicTable/MusicTable';
+import SearchBar from './Components/SearchBar/SearchBar';
+import AddSongForm from './Components/AddSong/AddSongForm';
+import NavBar from './Components/NavBar';
 
 function App() {
 
@@ -19,13 +22,27 @@ function App() {
     
   }
 
+  function addNewSong(song){
+    let tempSongs = [...songs, song];
+    setSongs(tempSongs);
+  }
+
+  
+
   return (
     <div className='container-fluid'>
       <div className='row'>
-        <h3>Music Library</h3>
+        <div>
+          <NavBar />
+        </div>
+        {/* <h3>Music Library</h3> */}
       </div>
       <div>
         <MusicTable parentSongs={songs}/>
+        <SearchBar/>
+      </div>
+      <div>
+        <AddSongForm addNewSongProperty={addNewSong}/>
       </div>
     </div>
   );
