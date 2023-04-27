@@ -29,11 +29,13 @@ function App() {
     // setSongs(tempSongs);
     // setSongs(response.data);
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/music/', song)
-      setSongs(response.data);
-
+      const response = await axios.post('http://127.0.0.1:8000/api/music/', song);
+      // setSongs(response.data);
+      if(response.status === 201){
+        await getAllSongs();
+      }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
     
   }
