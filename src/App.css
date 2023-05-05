@@ -5,4 +5,18 @@
     margin: 1em;
     padding: 1em;
     display: grid;
+    background-color: aliceblue;
+}
+
+.container-fluid {
+    background-image: url('./glowing-musical-pentagram-background-with-sound-notes_1017-31220.webp');
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* width: 649.600px;
+    height: 1862.700px; */
+}
+
+.navbar {
+    background-color: aliceblue;
+
 }

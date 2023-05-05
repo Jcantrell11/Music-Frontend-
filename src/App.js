@@ -6,9 +6,13 @@ import AddSongForm from './Components/AddSong/AddSongForm';
 import NavBar from './Components/NavBar';
 import './App.css';
 
+
 function App() {
 
   const [songs, setSongs] = useState([]);
+  
+
+  
 
   
 
@@ -25,12 +29,8 @@ function App() {
 
   async function addNewSong(song){
     
-    // let tempSongs = [...songs, song];
-    // setSongs(tempSongs);
-    // setSongs(response.data);
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/music/', song);
-      // setSongs(response.data);
       if(response.status === 201){
         await getAllSongs();
       }
@@ -40,18 +40,43 @@ function App() {
     
   }
 
+  async function searchLibrary(setQuery){
+    const response = await axios.get('http://127.0.0.1:8000/api/music/');
+    const filteredMusic = response.data.filter((song) => {
+        if (
+          song.title.toLowerCase().includes(setQuery.toLowerCase()) ||
+          song.artist.toLowerCase().includes(setQuery.toLowerCase()) ||
+          song.album.toLowerCase().includes(setQuery.toLowerCase()) ||
+          song.release_date.toLowerCase().includes(setQuery.toLowerCase()) ||
+          song.genre.toLowerCase().includes(setQuery.toLowerCase())
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      setSongs(filteredMusic);
+    };
+    
+    // useEffect(() => {
+    //   const filteredSongs = searchLibrary(searchValue);
+    //   setSongs(filteredSongs);
+    // }, [searchValue]);
+
+
+
   
 
   return (
     <div className='container-fluid'>
       <div className='row'>
-        <div>
+        <div className='navbar'>
           <NavBar />
         </div>
         <div className='col-md-6'>
           <div className='border-box'>
             <MusicTable parentSongs={songs}/>
-            <SearchBar/>
+            <SearchBar searchLibrary={searchLibrary}/>
           </div>
         </div>
         <div className='col-md-6'>
