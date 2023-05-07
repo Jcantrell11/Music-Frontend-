@@ -17,8 +17,6 @@ function SearchBar({ searchLibrary }) {
     };
 
 
-
-
     return (
 
         <div>
@@ -32,12 +30,6 @@ function SearchBar({ searchLibrary }) {
                 <button className="searchButton" value={query} onChange={handleSearchChange} type='search' style={{'margin': '0.5em'}}>Search</button>
             </form>
         </div>
-
-
-
-
-
-
 
     );
 }

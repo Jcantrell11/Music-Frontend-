@@ -1,12 +1,6 @@
 
 const MusicTable = (props) => {
     return (
-        // <><form>
-        //     <div>
-        //         <input type="text"></input>
-        //     </div>
-        //     <button type='submit'>Search</button>
-        // </form>
         <table className="table">
                 <thead>
                     <tr>
